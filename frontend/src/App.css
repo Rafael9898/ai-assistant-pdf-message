@@ -68,7 +68,7 @@ body {
   overflow: hidden;
 }
 
-/* Titulo de cima */
+/* titulo em cima */
 .chat-header {
   padding: 20px;
   text-align: center;
@@ -146,38 +146,81 @@ body {
   100% { opacity: 0.4; }
 }
 
-/* a zona de baixo onde escrevemos */
+/* a barra de escrita */
 .chat-input-area {
   padding: 20px;
   display: flex;
   gap: 12px;
   background-color: #1f2937;
   border-top: 1px solid #374151;
+  align-items: center;
 }
 
-/* a barra onde digitamos */
-.chat-input-area input {
+/* oque junta o clipe e a barra de texto */
+.input-wrapper {
+  display: flex;
   flex: 1;
-  padding: 16px 24px;
-  border-radius: 30px;
-  border: 1px solid #4b5563;
+  align-items: center;
   background-color: #111827;
-  color: #f3f4f6;
-  font-size: 15px;
-  outline: none;
+  border-radius: 30px;
+  border: 1px solid #4b5563; 
+  padding: 4px 8px;
   transition: all 0.2s ease;
 }
 
-/* quando clicamos na barra para escrever */
-.chat-input-area input:focus {
+/* efeito visual quando escrevemos na barra */
+.input-wrapper:focus-within {
   border-color: #2563eb;
-  background-color: #111827;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
-/* o botao de enviar */
-.chat-input-area button {
+/* estilo do botao de enviar o anexo */
+.clip-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  transition: all 0.2s ease;
+}
+
+/* tamanho do clipe */
+.clip-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* quando passamos o rato no clipe */
+.clip-button:hover:not(:disabled) {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+/* quando o clipe esta desativado */
+.clip-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* a barra onde digitamos */
+.input-wrapper input {
+  flex: 1;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  color: #f3f4f6;
+  font-size: 15px;
+  outline: none;
+}
+
+/* botao de enviar */
+.send-button {
   padding: 0 28px;
+  height: 48px;
   background-color: #2563eb;
   color: white;
   border: none;
@@ -188,30 +231,62 @@ body {
   transition: all 0.2s ease;
 }
 
-/* quando passamos o rato no botao */
-.chat-input-area button:hover:not(:disabled) {
+/* quando passamos o rato no botao de enviar */
+.send-button:hover:not(:disabled) {
   background-color: #1d4ed8;
   transform: translateY(-1px);
 }
 
-/* quando o botao esta bloqueado */
-.chat-input-area button:disabled {
+/* quando o botao enviar esta bloqueado */
+.send-button:disabled {
   background-color: #4b5563;
   cursor: not-allowed;
   opacity: 0.7;
 }
 
-/* estila a barra lateral de scroll */
+/* a barra que mostra o nome do ficheiro escolhido */
+.ficheiro-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #374151;
+  border-top: 1px solid #4b5563;
+  font-size: 13px;
+  color: #d1d5db;
+}
+
+/* o botao de cancelar ao lado do ficheiro */
+.ficheiro-info button {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+/* efeito ao passar o rato no X */
+.ficheiro-info button:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+}
+
+/* barra lateral */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #4b5563;
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #374151;
 }
